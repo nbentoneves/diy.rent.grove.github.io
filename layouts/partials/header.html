@@ -1,0 +1,28 @@
+{{ "<!-- navigation -->" | safeHTML }}
+<header class="sticky-top navigation">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="{{ site.Home.RelPermalink }}">
+        <img src="{{ site.Params.logo | relURL }}" alt="{{ site.Title }}" class="img-fluid" loading="lazy" width="134">
+      </a>
+      <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navigation">
+        <i class="ti-menu"></i>
+      </button>
+
+      <div class="collapse navbar-collapse text-center" id="navigation">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ site.Home.RelPermalink }}">{{ with site.Params.home }} {{ . }} {{ else }}Home{{ end }}</a>
+          </li>
+          {{ range site.Menus.main }}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ .URL | relURL }}">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
+        <a href="{{ "equipment/" | relLangURL }}" class="btn btn-sm btn-primary d-none d-lg-inline-block">Browse tools</a>
+      </div>
+    </nav>
+  </div>
+</header>
+{{ "<!-- /navigation -->" | safeHTML }}

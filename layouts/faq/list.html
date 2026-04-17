@@ -1,0 +1,41 @@
+{{ define "main" }}
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8 mx-auto text-center">
+        <h1 class="mb-3">Frequently asked questions</h1>
+        <p>Answers to common questions about DIY tool hire in Grove, Wantage, Abingdon, Oxford, Didcot and the rest of Oxfordshire.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        {{ $faqs := .Params.faqs }}
+        {{ if $faqs }}
+        <div id="faqAccordion">
+          {{ range $index, $item := $faqs }}
+          <div class="card mb-2">
+            <div class="card-header" id="heading{{ $index }}">
+              <h2 class="mb-0">
+                <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse{{ $index }}" aria-expanded="{{ if eq $index 0 }}true{{ else }}false{{ end }}" aria-controls="collapse{{ $index }}">
+                  {{ $item.question }}
+                </button>
+              </h2>
+            </div>
+            <div id="collapse{{ $index }}" class="collapse {{ if eq $index 0 }}show{{ end }}" aria-labelledby="heading{{ $index }}" data-parent="#faqAccordion">
+              <div class="card-body">
+                {{ $item.answer | markdownify }}
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        </div>
+        {{ else }}
+        <p>No FAQ items configured yet. Add them in <code>content/faq/_index.md</code>.</p>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

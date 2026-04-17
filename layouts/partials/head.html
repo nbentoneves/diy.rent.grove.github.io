@@ -1,0 +1,63 @@
+<head>
+  <meta charset="UTF-8">
+  <title>{{ with .Params.seoTitle }}{{ . }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+
+  {{ "<!-- Mobile Responsive Meta -->" | safeHTML }}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {{ $description := cond (ne .Params.metaDescription "") .Params.metaDescription (cond (ne .Description "") .Description site.Params.description) }}
+  <meta name="description" content="{{ $description }}">
+  {{ with site.Params.author }}<meta name="author" content="{{ . }}">{{ end }}
+  {{ hugo.Generator }}
+
+  <!-- Canonical URL -->
+  {{ $canonical := .Permalink }}
+  <link rel="canonical" href="{{ $canonical }}">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="{{ if .IsHome }}website{{ else }}article{{ end }}">
+  <meta property="og:title" content="{{ with .Params.seoTitle }}{{ . }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
+  <meta property="og:description" content="{{ $description }}">
+  <meta property="og:url" content="{{ $canonical }}">
+  {{ $image := "" }}
+  {{ if .Params.image }}
+    {{ $image = .Params.image }}
+  {{ else if site.Params.businessLogo }}
+    {{ $image = site.Params.businessLogo }}
+  {{ end }}
+  {{ if $image }}
+  <meta property="og:image" content="{{ $image | absURL }}">
+  {{ end }}
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ with .Params.seoTitle }}{{ . }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}">
+  <meta name="twitter:description" content="{{ $description }}">
+  {{ if $image }}
+  <meta name="twitter:image" content="{{ $image | absURL }}">
+  {{ end }}
+
+  <!-- theme meta -->
+  <meta name="theme-name" content="hargo-hugo" />
+
+  {{ "<!-- Plugins -->" | safeHTML }}
+  {{ range site.Params.plugins.css }}
+  <link rel="stylesheet" href="{{ .link | relURL }}">
+  {{ end }}
+
+  {{ with site.Params.snipcartApiKey }}
+  {{ "<!-- Snipcart disabled for this site: no checkout functionality used -->" | safeHTML }}
+  {{ end }}
+
+  {{ "<!-- Main Stylesheet -->" | safeHTML }}
+  {{ $styles := resources.Get "scss/style.scss" | toCSS | minify }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}" media="screen">
+
+  {{ "<!-- Favicon -->" | safeHTML }}
+  <link rel="shortcut icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
+  <link rel="icon" href="{{ `images/favicon.png` | relURL }}" type="image/x-icon">
+
+  {{ partial "schema-local-business.html" . }}
+  {{ partial "schema-equipment.html" . }}
+  {{ partial "schema-faq.html" . }}
+</head>

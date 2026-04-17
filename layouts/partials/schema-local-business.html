@@ -1,0 +1,35 @@
+{{/* LocalBusiness schema on home, about, contact, and locations pages */}}
+{{ if or .IsHome (in (slice "about" "contact" "locations") .Section) }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ site.Params.businessName }}",
+  "@id": "{{ site.BaseURL }}#localbusiness",
+  "url": "{{ site.Params.businessUrl }}",
+  "telephone": "{{ site.Params.businessPhone }}",
+  "email": "{{ site.Params.businessEmail }}",
+  "image": "{{ site.Params.businessLogo }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ site.Params.businessStreet }}",
+    "addressLocality": "{{ site.Params.businessLocality }}",
+    "addressRegion": "{{ site.Params.businessRegion }}",
+    "postalCode": "{{ site.Params.businessPostcode }}",
+    "addressCountry": "{{ site.Params.businessCountry }}"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": {{ site.Params.businessGeoLat }},
+    "longitude": {{ site.Params.businessGeoLng }}
+  },
+  "areaServed": [
+    {{- range $index, $area := site.Params.primaryServiceArea -}}
+      {{- if $index }}, {{ end -}}
+      "{{ $area }}"
+    {{- end -}}
+  ],
+  "openingHours": "{{ site.Params.businessOpeningHours }}"
+}
+</script>
+{{ end }}

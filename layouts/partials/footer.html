@@ -1,0 +1,60 @@
+<footer class="section pb-0">
+  <div class="container">
+    <div class="row border-bottom pb-5 justify-content-between">
+      <div class="col-12 text-center section-sm">
+        <a href="{{ site.Home.RelPermalink }}">
+          {{ partial "image.html" (dict "Src" site.Params.logo "Alt" site.Title "Class" "img-fluid") }}
+        </a>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-4 mb-md-0">
+        <h5 class="font-weight-medium mb-4">Quick links</h5>
+        <ul class="list-unstyled">
+          {{ range site.Menus.main }}
+          <li class="mb-2"><a class="text-color" href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <div class="col-md-4 col-sm-6 mb-4 mb-md-0">
+        <h5 class="font-weight-medium mb-4">Contact us</h5>
+        <ul class="list-unstyled mb-0">
+          {{ with site.Params.businessPhone }}
+          <li class="mb-3">
+            <a class="text-color" href="tel:{{ . }}"><i class="ti-mobile text-primary mr-2"></i>{{ . }}</a>
+          </li>
+          {{ end }}
+          {{ with site.Params.businessEmail }}
+          <li class="mb-3">
+            <a class="text-color" href="mailto:{{ . }}"><i class="ti-email text-primary mr-2"></i>{{ . }}</a>
+          </li>
+          {{ end }}
+          <li class="mb-3">
+            <i class="ti-location-pin text-primary mr-2"></i>{{ site.Params.businessLocality }}, {{ site.Params.businessRegion }}
+          </li>
+        </ul>
+        <a href="{{ "contact/" | relLangURL }}" class="btn btn-outline-primary btn-sm">Go to contact page</a>
+      </div>
+
+      <div class="col-md-4">
+        <h5 class="font-weight-medium mb-4">About</h5>
+        <p class="mb-0">{{ site.Params.footerText }}</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 text-center py-4">
+        <small>© {{ now.Year }} {{ site.Params.businessName }}</small>
+      </div>
+    </div>
+  </div>
+</footer>
+
+{{ "<!-- JS Plugins -->" | safeHTML }}
+{{ range site.Params.plugins.js}}
+<script src="{{ .link | relURL }}"></script>
+{{ end }}
+
+{{ "<!-- Main Script -->" | safeHTML }}
+{{ $script := resources.Get "js/script.js" | minify}}
+<script src="{{ $script.RelPermalink }}"></script>

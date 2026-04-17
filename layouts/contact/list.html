@@ -1,0 +1,31 @@
+{{ define "main" }}
+
+{{ partial "page-title.html" . }}
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-7 mb-4">
+        <div class="content">
+          {{ .Content }}
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="bg-light p-4 rounded">
+          <h3 class="h5 mb-3">Contact details</h3>
+          <ul class="list-unstyled mb-0">
+            {{ with site.Params.businessEmail }}
+            <li class="mb-3"><a class="text-color" href="mailto:{{ . }}"><i class="ti-email text-primary mr-2"></i>{{ . }}</a></li>
+            {{ end }}
+            {{ with site.Params.businessPhone }}
+            <li class="mb-3"><a class="text-color" href="tel:{{ . }}"><i class="ti-mobile text-primary mr-2"></i>{{ . }}</a></li>
+            {{ end }}
+            <li class="mb-3"><i class="ti-location-pin text-primary mr-2"></i>{{ site.Params.businessLocality }}, {{ site.Params.businessRegion }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

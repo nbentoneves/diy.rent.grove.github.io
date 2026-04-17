@@ -1,0 +1,103 @@
+baseURL = "https://your-github-username.github.io/oxon-tool-hire/"
+languageCode = "en-gb"
+title = "DIY Rent Grove Tool Hire | Local Tool Rental in Grove, Wantage, Abingdon & Oxford"
+
+enableRobotsTXT = true
+
+[pagination]
+  pagerSize = 10
+
+disableKinds = ["taxonomy"]
+
+[permalinks]
+  equipment = "/equipment/:slug/"
+
+[taxonomies]
+  category = "categories"
+
+[module]
+  # Import Hargo theme as a Hugo Module
+  [[module.imports]]
+    path = "github.com/gethugothemes/hargo-hugo"
+
+[params]
+  description = "Local DIY tool hire in Oxfordshire. Rent pressure washers, ladders, garden tools and more in Grove, Wantage, Abingdon, Oxford, Didcot and nearby villages."
+  author = "DIY Rent Grove Tool Hire"
+  home = "Home"
+  logo = "images/branding/logo.png"
+  footerText = "DIY Rent Grove Tool Hire – Local, affordable tools for DIYers across Oxfordshire."
+
+  # Business details for schema and contact
+  businessName = "DIY Rent Grove Tool Hire"
+  businessLegalName = "DIY Rent Grove Tool Hire"
+  businessType = "HomeAndConstructionBusiness"
+  businessEmail = "info@example.com"
+  businessPhone = ""
+  businessUrl = "https://your-github-username.github.io/oxon-tool-hire/"
+  businessLogo = "https://your-github-username.github.io/oxon-tool-hire/images/branding/logo-placeholder.png"
+  businessStreet = ""
+  businessLocality = "Grove"
+  businessRegion = "Oxfordshire"
+  businessPostcode = "OX12 7FB"
+  businessCountry = "GB"
+  businessGeoLat = 51.606
+  businessGeoLng = -1.423
+  businessOpeningHours = "Mo-Su 08:00-19:00"
+
+  primaryServiceArea = ["Grove","Wantage","Abingdon","Oxford","Didcot","Nearby Oxfordshire villages"]
+
+  # Social profiles (optional)
+  facebook = "https://www.facebook.com/yourpage"
+  instagram = "https://www.instagram.com/yourprofile"
+
+  [params.plugins]
+    [[params.plugins.css]]
+      link = "plugins/bootstrap/bootstrap.min.css"
+    [[params.plugins.css]]
+      link = "plugins/themify-icons/themify-icons.css"
+    [[params.plugins.css]]
+      link = "plugins/slick/slick.css"
+
+    [[params.plugins.js]]
+      link = "plugins/jQuery/jquery.min.js"
+    [[params.plugins.js]]
+      link = "plugins/bootstrap/bootstrap.min.js"
+    [[params.plugins.js]]
+      link = "plugins/slick/slick.min.js"
+
+[menu]
+
+  [[menu.main]]
+    name = "Tools"
+    url = "/equipment/"
+    weight = 1
+
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+
+  [[menu.main]]
+    name = "FAQ"
+    url = "/faq/"
+    weight = 3
+
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 4
+
+[sitemap]
+  changefreq = "weekly"
+  priority = 0.7
+  filename = "sitemap.xml"
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
+    respectDoNotTrack = true
+    useSessionStorage = false
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  section = ["HTML", "RSS"]

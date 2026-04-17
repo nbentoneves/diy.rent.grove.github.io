@@ -1,0 +1,59 @@
+{{ define "main" }}
+
+<section class="section-sm">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>{{ .Title }}</h1>
+        <p class="text-muted mb-0">Browse all DIY tools available to hire across Oxfordshire.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-3 mb-3">
+        <h2 class="h5">Filter by category</h2>
+        <ul class="list-unstyled">
+          {{ range $name, $taxonomy := .Site.Taxonomies.categories }}
+          <li><a href="{{ $taxonomy.Page.RelPermalink }}">{{ $taxonomy.Page.Title }}</a></li>
+          {{ end }}
+        </ul>
+        <h2 class="h5 mt-4">Popular areas</h2>
+        <ul class="list-unstyled">
+          {{ range .Site.Sections }}
+            {{ if eq .Section "locations" }}
+              {{ range .Pages }}
+                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+              {{ end }}
+            {{ end }}
+          {{ end }}
+        </ul>
+      </div>
+      <div class="col-lg-9">
+        <div class="row">
+          {{ range .Pages.ByTitle }}
+          <div class="col-md-6 mb-4">
+            <article class="card rounded-0 border-0 h-100">
+              {{ if .Params.image }}
+                {{ partial "image.html" (dict "Src" .Params.image "Alt" .Title "Class" "card-img-top rounded-top-0") }}
+              {{ end }}
+              <div class="card-body">
+                <h2 class="h5"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+                {{ with .Params.shortDescription }}<p>{{ . }}</p>{{ end }}
+                {{ with .Params.dailyPrice }}<p class="font-weight-bold mb-2">From {{ . }} per day</p>{{ end }}
+                {{ with .Params.serviceArea }}<p class="small text-muted mb-2">Service area: {{ delimit . ", " }}</p>{{ end }}
+                {{ partial "hygglo-cta.html" . }}
+              </div>
+            </article>
+          </div>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

@@ -1,0 +1,4 @@
+{{- $src := .Src -}}
+{{- if $src -}}
+<img src="{{ $src | relURL }}" alt="{{ with .Alt }}{{ . }}{{ else }}image{{ end }}" class="{{ .Class }}" loading="lazy">
+{{- end -}}

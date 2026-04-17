@@ -1,0 +1,11 @@
+<nav aria-label="breadcrumb" class="mb-3">
+  <ol class="breadcrumb bg-transparent px-0 mb-0">
+    <li class="breadcrumb-item"><a href="{{ site.Home.RelPermalink }}">Home</a></li>
+    {{ if eq .Section "equipment" }}
+      <li class="breadcrumb-item"><a href="{{ "equipment/" | relLangURL }}">Tools</a></li>
+    {{ else if eq .Section "categories" }}
+      <li class="breadcrumb-item"><a href="{{ "categories/" | relLangURL }}">Categories</a></li>
+    {{ end }}
+    <li class="breadcrumb-item active" aria-current="page">{{ .Title }}</li>
+  </ol>
+</nav>

@@ -1,0 +1,29 @@
+{{/* Product/Service schema for individual equipment pages */}}
+{{ if eq .Section "equipment" }}
+{{ $serviceArea := site.Params.primaryServiceArea }}
+{{ with .Params.serviceArea }}{{ $serviceArea = . }}{{ end }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ .Title }}",
+  "description": "{{ with .Params.longDescription }}{{ . }}{{ else }}{{ .Summary }}{{ end }}",
+  "image": "{{ with .Params.image }}{{ . | absURL }}{{ else }}{{ site.Params.businessLogo }}{{ end }}",
+  "brand": {
+    "@type": "Organization",
+    "name": "{{ site.Params.businessName }}"
+  },
+  "areaServed": {
+    "@type": "AdministrativeArea",
+    "name": "{{ delimit $serviceArea ", " }}"
+  },
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ .Params.dailyPrice }}",
+    "priceCurrency": "GBP",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ .Params.hyggloUrl }}"
+  }
+}
+</script>
+{{ end }}

@@ -1,0 +1,159 @@
+{{ define "main" }}
+
+<section class="hero section pt-5 pb-4 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7 mb-4 mb-lg-0">
+        <h1 class="mb-3">Local DIY tool hire in Oxfordshire</h1>
+        <p class="lead mb-4">Rent quality tools in Grove, Wantage, Abingdon, Oxford, Didcot and nearby villages – with clear pricing, flexible collection, and friendly local support.</p>
+        <a href="{{ "equipment/" | relLangURL }}" class="btn btn-primary btn-lg mr-2">Browse all tools</a>
+        <a href="#how-it-works" class="btn btn-outline-primary" hidden>How renting works</a>
+      </div>
+      <div class="col-lg-5">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h2 class="h5">Popular this week</h2>
+            <ul class="list-unstyled mb-0">
+              {{ $featured := where (where site.RegularPages "Section" "equipment") "Params.featured" true }}
+              {{ range first 3 $featured }}
+              <li class="media my-3">
+                {{ if .Params.image }}
+                  {{ partial "image.html" (dict "Src" .Params.image "Alt" .Title "Class" "mr-3" ) }}
+                {{ end }}
+                <div class="media-body">
+                  <a href="{{ .RelPermalink }}" class="h6 d-block mb-1">{{ .Title }}</a>
+                  {{ with .Params.shortDescription }}<p class="mb-1 small">{{ . }}</p>{{ end }}
+                  {{ with .Params.dailyPrice }}<p class="mb-0 font-weight-bold">From {{ . }} per day</p>{{ end }}
+                </div>
+              </li>
+              {{ else }}
+              <li>No featured tools yet. Mark tools with <code>featured = true</code> in front matter.</li>
+              {{ end }}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works" class="section pt-5 pb-4">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2>How local tool hire works</h2>
+        <p>Simple, flexible rentals powered by Hygglo – ideal for DIYers and homeowners.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 h-100">
+          <div class="card-body text-center">
+            <span class="badge badge-primary badge-pill mb-2">1</span>
+            <h3 class="h5">Browse tools</h3>
+            <p>Explore our range of DIY tools and equipment, from pressure washers and ladders to decorating and garden gear.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 h-100">
+          <div class="card-body text-center">
+            <span class="badge badge-primary badge-pill mb-2">2</span>
+            <h3 class="h5">Book on Hygglo</h3>
+            <p>Each tool links to its Hygglo listing where you can check live availability, pricing and send your booking request.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 h-100">
+          <div class="card-body text-center">
+            <span class="badge badge-primary badge-pill mb-2">3</span>
+            <h3 class="h5">Collect locally</h3>
+            <p>Pick up in Grove with flexible collection and return times, clear instructions, and clean, well‑maintained tools.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-4 pb-4 bg-light">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2>Tools available to hire</h2>
+        <p>Browse by category to quickly find the right equipment for your next project.</p>
+      </div>
+    </div>
+    <div class="row">
+      {{ range .Site.Taxonomies.categories }}
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 h-100">
+          <div class="card-body">
+            <h3 class="h5"><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></h3>
+            <p class="mb-2">{{ with .Page.Params.description }}{{ . }}{{ else }}Tools for {{ lower .Page.Title }} projects in Oxfordshire.{{ end }}</p>
+            <p class="small text-muted mb-0">{{ len .Pages }} tools available</p>
+          </div>
+        </div>
+      </div>
+      {{ end }}
+    </div>
+    <div class="text-center mt-3">
+      <a href="{{ "equipment/" | relLangURL }}" class="btn btn-outline-primary">View all tools</a>
+    </div>
+  </div>
+</section>
+
+<section class="section pt-4 pb-4">
+  <div class="container">
+    <div class="row mb-4">
+      <div class="col-lg-8 mx-auto text-center">
+        <h2>Areas we cover in Oxfordshire</h2>
+        <p>Convenient pickup in Grove, with regular rentals across the Vale of White Horse and wider Oxfordshire. We also offer delivery by arrangement for a small fee.</p>
+      </div>
+    </div>
+    <div class="row">
+      {{ range .Site.Sections }}
+        {{ if eq .Section "locations" }}
+          {{ range .Pages }}
+          <div class="col-md-4 mb-4">
+            <div class="card border-0 h-100">
+              <div class="card-body">
+                <h3 class="h5"><a href="{{ .RelPermalink }}">Tool hire in {{ .Title }}</a></h3>
+                {{ with .Params.intro }}<p class="mb-0">{{ . }}</p>{{ end }}
+              </div>
+            </div>
+          </div>
+          {{ end }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="section pt-4 pb-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6 mb-4 mb-lg-0">
+        <h2>Why rent instead of buy?</h2>
+        <ul class="list-unstyled">
+          <li class="mb-2"><strong>Save money</strong> – only pay for the days you actually need the tool.</li>
+          <li class="mb-2"><strong>No storage hassle</strong> – avoid filling your garage or shed with rarely used kit.</li>
+          <li class="mb-2"><strong>Local support</strong> – get practical tips from someone who uses these tools for real DIY projects in Oxfordshire homes.</li>
+        </ul>
+      </div>
+      <div class="col-lg-6">
+        <div class="card border-0 shadow-sm">
+          <div class="card-body">
+            <h3 class="h5">Ready to start your project?</h3>
+            <p>Browse our current tools and jump over to Hygglo to book in a couple of clicks.</p>
+            <a href="{{ "equipment/" | relLangURL }}" class="btn btn-primary mr-2">Browse tools</a>
+            <a href="{{ "contact/" | relLangURL }}" class="btn btn-outline-primary">Ask a question</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

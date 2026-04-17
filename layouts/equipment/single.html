@@ -1,0 +1,46 @@
+{{ define "main" }}
+
+<section class="section pt-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        {{ partial "breadcrumbs.html" . }}
+        <h1 class="mb-3">{{ .Title }}</h1>
+        {{ with .Params.shortDescription }}<p class="lead">{{ . }}</p>{{ end }}
+        {{ if .Params.image }}
+          {{ partial "image.html" (dict "Src" .Params.image "Alt" .Title "Class" "img-fluid mb-4") }}
+        {{ end }}
+        <div class="content mb-4">
+          {{ .Content }}
+        </div>
+        <h2 class="h5">Hire details</h2>
+        <ul class="list-unstyled mb-4">
+          {{ with .Params.dailyPrice }}<li><strong>Typical daily price:</strong> {{ . }}</li>{{ end }}
+          {{ with .Params.condition }}<li><strong>Tool condition:</strong> {{ . }}</li>{{ end }}
+          {{ with .Params.availabilityNote }}<li><strong>Availability:</strong> {{ . }}</li>{{ end }}
+          {{ with .Params.serviceArea }}<li><strong>Service area:</strong> {{ delimit . ", " }}</li>{{ end }}
+        </ul>
+        {{ partial "hygglo-cta.html" . }}
+      </div>
+      <div class="col-lg-4">
+        <aside class="bg-light p-3 rounded mb-4">
+          <h2 class="h5">Suitable for</h2>
+          <p>Ideal for DIYers, homeowners and local trades in Oxfordshire who need reliable tools for short‑term projects.</p>
+          <h3 class="h6 mt-3">Collection & return</h3>
+          <p>Collection is from Grove (near Wantage). Exact address and pickup details are shared via Hygglo once your booking is confirmed.</p>
+        </aside>
+        <div class="mt-4">
+          <h2 class="h5">Related tools</h2>
+          <ul class="list-unstyled mb-0">
+            {{ $current := . }}
+            {{ range first 4 (where (where site.RegularPages "Section" "equipment") "Permalink" "ne" .Permalink) }}
+              <li class="mb-2"><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+            {{ end }}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}
