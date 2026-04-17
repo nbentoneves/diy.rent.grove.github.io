@@ -6,7 +6,7 @@ metaDescription = "Get in touch about DIY tool hire in Oxfordshire. Ask about av
 
 If you have a question about a tool, local availability or which piece of kit is best for your project, please get in touch.
 
-- **Email:** info@example.com  
+- **Email:** diy.rent.grove@gmail.com
 - **Location:** Grove, near Wantage in Oxfordshire  
 
 The fastest way to confirm availability and place a booking is to click through to the relevant Hygglo listing from any tool page.

@@ -6,7 +6,7 @@ metaDescription = "Hire a corded hedge trimmer in Grove and Wantage to keep hedg
 
 date = 2026-01-04T10:00:00Z
 
-draft = false
+draft = true
 
 categories = ["garden"]
 locations = ["Grove","Wantage","Abingdon"]

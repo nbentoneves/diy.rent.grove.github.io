@@ -36,15 +36,15 @@
         <div class="row">
           {{ range .Pages.ByTitle }}
           <div class="col-md-6 mb-4">
-            <article class="card rounded-0 border-0 h-100">
+            <article class="card rounded-0 border-0 h-100 shadow-sm">
               {{ if .Params.image }}
-                {{ partial "image.html" (dict "Src" .Params.image "Alt" .Title "Class" "card-img-top rounded-top-0") }}
+              {{ partial "image.html" (dict "Src" .Params.image "Alt" .Title "Class" "card-img-top rounded-top-0") }}
               {{ end }}
               <div class="card-body">
                 <h2 class="h5"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
                 {{ with .Params.shortDescription }}<p>{{ . }}</p>{{ end }}
                 {{ with .Params.dailyPrice }}<p class="font-weight-bold mb-2">From {{ . }} per day</p>{{ end }}
-                {{ with .Params.serviceArea }}<p class="small text-muted mb-2">Service area: {{ delimit . ", " }}</p>{{ end }}
+                {{ with .Params.serviceArea }}<p class="small text-muted mb-2" hidden>Service area: {{ delimit . ", " }}</p>{{ end }}
                 {{ partial "hygglo-cta.html" . }}
               </div>
             </article>

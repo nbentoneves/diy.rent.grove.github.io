@@ -18,7 +18,7 @@
               {{ range first 3 $featured }}
               <li class="media my-3">
                 {{ if .Params.image }}
-                  {{ partial "image.html" (dict "Src" .Params.image "Alt" .Title "Class" "mr-3" ) }}
+                  {{ partial "image.html" (dict "Src" .Params.image "Alt" .Title "Class" "mr-3" "Style" "width: 35%; height: auto;" ) }}
                 {{ end }}
                 <div class="media-body">
                   <a href="{{ .RelPermalink }}" class="h6 d-block mb-1">{{ .Title }}</a>

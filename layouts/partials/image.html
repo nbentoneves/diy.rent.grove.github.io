@@ -1,4 +1,4 @@
 {{- $src := .Src -}}
 {{- if $src -}}
-<img src="{{ $src | relURL }}" alt="{{ with .Alt }}{{ . }}{{ else }}image{{ end }}" class="{{ .Class }}" loading="lazy">
+<img src="{{ $src | relURL }}" alt="{{ with .Alt }}{{ . }}{{ else }}image{{ end }}" class="{{ .Class }}"{{ with .Style }} {{ printf "style=%q" . | safeHTMLAttr }}{{ end }} loading="lazy">
 {{- end -}}

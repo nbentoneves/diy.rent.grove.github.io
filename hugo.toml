@@ -1,4 +1,4 @@
-baseURL = "https://your-github-username.github.io/oxon-tool-hire/"
+baseURL = "https://nbentoneves.github.io/diy.rent.grove.github.io/"
 languageCode = "en-gb"
 title = "DIY Rent Grove Tool Hire | Local Tool Rental in Grove, Wantage, Abingdon & Oxford"
 
@@ -31,18 +31,18 @@ disableKinds = ["taxonomy"]
   businessName = "DIY Rent Grove Tool Hire"
   businessLegalName = "DIY Rent Grove Tool Hire"
   businessType = "HomeAndConstructionBusiness"
-  businessEmail = "info@example.com"
+  businessEmail = "diy.rent.grove@gmail.com"
   businessPhone = ""
-  businessUrl = "https://your-github-username.github.io/oxon-tool-hire/"
-  businessLogo = "https://your-github-username.github.io/oxon-tool-hire/images/branding/logo-placeholder.png"
-  businessStreet = ""
+  businessUrl = "https://nbentoneves.github.io/diy.rent.grove.github.io/"
+  businessLogo = "https://nbentoneves.github.io/diy.rent.grove.github.io/images/branding/logo.png"
+  businessStreet = "18 Kingside"
   businessLocality = "Grove"
   businessRegion = "Oxfordshire"
   businessPostcode = "OX12 7FB"
   businessCountry = "GB"
-  businessGeoLat = 51.606
-  businessGeoLng = -1.423
-  businessOpeningHours = "Mo-Su 08:00-19:00"
+  businessGeoLat = 51.61397763271589
+  businessGeoLng = -1.414373126333066
+  businessOpeningHours = "24 Hours"
 
   primaryServiceArea = ["Grove","Wantage","Abingdon","Oxford","Didcot","Nearby Oxfordshire villages"]
 

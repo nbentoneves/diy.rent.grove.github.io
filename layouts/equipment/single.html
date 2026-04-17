@@ -15,10 +15,9 @@
         </div>
         <h2 class="h5">Hire details</h2>
         <ul class="list-unstyled mb-4">
-          {{ with .Params.dailyPrice }}<li><strong>Typical daily price:</strong> {{ . }}</li>{{ end }}
+          {{ with .Params.dailyPrice }}<li><strong>Typical daily price:</strong> {{ . }}, discount might be applied when renting multiple days</li>{{ end }}
           {{ with .Params.condition }}<li><strong>Tool condition:</strong> {{ . }}</li>{{ end }}
           {{ with .Params.availabilityNote }}<li><strong>Availability:</strong> {{ . }}</li>{{ end }}
-          {{ with .Params.serviceArea }}<li><strong>Service area:</strong> {{ delimit . ", " }}</li>{{ end }}
         </ul>
         {{ partial "hygglo-cta.html" . }}
       </div>
@@ -28,6 +27,8 @@
           <p>Ideal for DIYers, homeowners and local trades in Oxfordshire who need reliable tools for short‑term projects.</p>
           <h3 class="h6 mt-3">Collection & return</h3>
           <p>Collection is from Grove (near Wantage). Exact address and pickup details are shared via Hygglo once your booking is confirmed.</p>
+          <h3 class="h6 mt-3">Delivery</h3>
+          <p>Delivery is available, with fees calculated based on distance. 0.25£ per mile.</p>
         </aside>
         <div class="mt-4">
           <h2 class="h5">Related tools</h2>
