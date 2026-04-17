@@ -9,7 +9,7 @@ metaDescription = "Answers to common questions about local DIY tool hire in Oxfo
 
   [[faqs]]
     question = "Which areas do you cover?"
-    answer = "We regularly rent tools to people in Grove, Wantage, Abingdon, Didcot, Oxford and nearby Oxfordshire villages. If you are a bit further away, feel free to ask via Hygglo before booking."
+    answer = "We regularly rent tools to people in Grove, Wantage, Abingdon, Didcot, Oxford and nearby Oxfordshire villages. If you are a bit further away, feel free to ask via Hygglo before booking or use the contact page details."
 
   [[faqs]]
     question = "How do I book a tool?"
